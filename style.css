@@ -1,0 +1,22 @@
+.board {
+	width: 600px;
+	height: 600px;
+	margin: 0 auto;
+  background-color: #24724b;
+  color: #fff;
+  border: 6px solid #26ef8b;
+  border-radius: 10px;
+	
+	display: grid;
+	grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+}
+.cell {
+  border: 6px solid #02f91f;
+  border-radius: 2px;
+  font-family: Helvetica;
+  font-weight: bold;
+  font-size: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
