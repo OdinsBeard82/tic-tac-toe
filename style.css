@@ -4,9 +4,7 @@
 	margin: 0 auto;
   background-color: #24724b;
   color: #fff;
-  border: 6px solid #26ef8b;
   border-radius: 10px;
-	
 	display: grid;
 	grid-template: repeat(3, 1fr) / repeat(3, 1fr);
 }
@@ -19,4 +17,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.ChoosePlayer {
+  width: 10px;
+	height: 50px;
+	margin: 0 auto;
+  color: #fff;
+  border-radius: 10px;
+	display: flex;
+  padding: 10px;
+}
+.player1,
+.player2 {
+  background-color: #02f91f;
+  
 }
