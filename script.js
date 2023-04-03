@@ -27,3 +27,14 @@ function selectPlayer(event) {
    console.log(player2.name + ' has selected symbol ' + player2.symbol);
  }
 }
+
+// WORK ON THIS 
+const player1Choice = document.querySelector('.cell');
+const player2Choice = document.querySelector('.cell');
+player1Choice.addEventListener('click', playerSelect);
+player2Choice.addEventListener('click', playerSelect);
+
+function playerSelect(event) {
+  const playerSelectedCell = event.target;
+  playerSelectedCell.textContent = player1.symbol;
+}
