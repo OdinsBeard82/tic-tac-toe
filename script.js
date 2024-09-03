@@ -1,4 +1,4 @@
-const gameBoard= {
+const gameBoard = {
   board: [
     ['', '', ''],
     ['', '', ''],
@@ -12,7 +12,6 @@ function Player(name, symbol) {
   this.name = name;
   this.symbol = symbol;
 }
-
 
 const player1Button = document.querySelector('.player1');
 const player2Button = document.querySelector('.player2');
@@ -40,12 +39,13 @@ function addPlayerToGame(name, symbol) {
 function startGame() {
   const player1Name = document.getElementById('player1').value;
   const player2Name = document.getElementById('player2').value;
-  
+
   if (player1Name !== '' && player2Name !== '') {
     addPlayerToGame(player1Name, 'X');
     addPlayerToGame(player2Name, 'O');
   }
 }
+
 
 document.getElementById('start-button').addEventListener('click', startGame);
 
@@ -60,37 +60,39 @@ function selectPlayer(event) {
 
 function addSymbolToBoard(event) {
   const selectedCell = event.target;
-  const rowIndex = selectedCell.dataset.row;
-  const colIndex = selectedCell.dataset.col;
+  const rowIndex = selectedCell.getAttribute('data-row');
+  const colIndex = selectedCell.getAttribute('data-col');
   const currentPlayer = currentPlayers[currentPlayerIndex];
 
-  gameBoard.board[rowIndex][colIndex] = currentPlayer.symbol;
+  if (gameBoard.board[rowIndex][colIndex] === '') {
+    gameBoard.board[rowIndex][colIndex] = currentPlayer.symbol;
+    selectedCell.textContent = currentPlayer.symbol;
+    currentPlayerIndex = (currentPlayerIndex + 1) % currentPlayers.length;
 
-  selectedCell.textContent = currentPlayer.symbol;
-  currentPlayerIndex = (currentPlayerIndex +1) % currentPlayers.length;
-
-  CheckForWin(cells);
+    if (CheckForWin()) {
+      cells.forEach(cell => cell.removeEventListener('click', addSymbolToBoard));
+    }
+  }
 }
 
-function CheckForWin(cells) {
+function CheckForWin() {
   let filledCells = 0;
 
   for (let win of winningSelections) {
-    if(cells[win[0]].textContent == cells[win[1]].textContent
-      && 
-      cells[win[1]].textContent == cells[win[2]].textContent
-      &&
-      cells[win[0]].textContent !=''
-      ){
-        const winnerSymbol = cells[win[0]].textContent;
-        const winner = currentPlayers.find(player => player.symbol === winnerSymbol).name || `Player ${winnerSymbol}`;
-        const congratulationMsg = `Congratulations ${winner}! You won!`;
-        const winningMsg = document.createElement('p');
-        winningMsg.textContent = congratulationMsg;
-        document.body.appendChild(winningMsg);
-        return true;
-      }
+    if (cells[win[0]].textContent === cells[win[1]].textContent &&
+      cells[win[1]].textContent === cells[win[2]].textContent &&
+      cells[win[0]].textContent !== '') {
+
+      const winnerSymbol = cells[win[0]].textContent;
+      const winner = currentPlayers.find(player => player.symbol === winnerSymbol).name || `Player ${winnerSymbol}`;
+      const congratulationMsg = `Congratulations ${winner}! You won!`;
+      const winningMsg = document.createElement('p');
+      winningMsg.textContent = congratulationMsg;
+      document.body.appendChild(winningMsg);
+      return true;
+    }
   }
+
   for (let cell of cells) {
     if (cell.textContent !== '') {
       filledCells++;
@@ -98,15 +100,15 @@ function CheckForWin(cells) {
   }
 
   if (filledCells === cells.length) {
-        const congratulationMsg = `It's a tie!`;
-        const winningMsg = document.createElement('p');
-        winningMsg.textContent = congratulationMsg;
-        document.body.appendChild(winningMsg);
+    const congratulationMsg = `It's a tie!`;
+    const winningMsg = document.createElement('p');
+    winningMsg.textContent = congratulationMsg;
+    document.body.appendChild(winningMsg);
     return true;
   }
+
   return false;
 }
-
 
 function restartGame() {
   gameBoard.board = [
@@ -116,10 +118,8 @@ function restartGame() {
   ];
   cells.forEach(cell => cell.textContent = '');
   currentPlayerIndex = 0;
+  cells.forEach(cell => cell.addEventListener('click', addSymbolToBoard));
 }
-
-addPlayerToGame('Player1', 'X');
-addPlayerToGame('Player2', 'O');
 
 player1Button.addEventListener('click', selectPlayer);
 player2Button.addEventListener('click', selectPlayer);

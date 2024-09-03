@@ -1,27 +1,41 @@
+body {
+  background-color: #128af4;
+}
+
 .gameBoard {
-	width: 600px;
-	height: 600px;
-	margin: 0 auto;
-  background-color: #24724b;
+  width: 600px;
+  height: 600px;
+  margin: 0 auto;
+  background-color: #000;
   color: #fff;
   border-radius: 10px;
-	display: grid;
-	grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
 }
+
 .cell {
-  border: 6px solid #02f91f;
-  border-radius: 2px;
-  font-family: Helvetica;
+  border: 3px solid #128af4;
+  border-radius: 4px;
+  font-family: "Star Jedi", sans-serif;
   font-weight: bold;
-  font-size: 150px;
+  font-size: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
-  
+  text-align: center;
+  transition: background-color 0.3s ease-in-out;
+  background-color: #222;
+  cursor: pointer;
 }
 
+.cell:hover {
+  background-color: #333;
+}
 
-.player1,
+.player1 {
+  background-color: #02f91f;
+}
+
 .player2 {
-  background-color: #02f91f; 
+  background-color: #128af4;
 }
