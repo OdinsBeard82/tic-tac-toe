@@ -2,6 +2,8 @@
 
 <img width="1431" alt="Screenshot 2024-09-03 at 15 53 53" src="https://github.com/user-attachments/assets/694cc835-3580-41d6-9c61-980f922cf47b">
 
+![Tic-Tac-Toe Board](https://github.com/OdinsBeard82/tic-tac-toe/blob/main/README.md)
+
 ## Project Description
 
 Tic-Tac-Toe is a web-based application where players can play the classic game of Tic-Tac-Toe. The game allows two players to take turns placing their symbols (X and O) on a 3x3 grid. The objective is to align three of your symbols horizontally, vertically, or diagonally before your opponent does. The application provides an interactive and real-time visual representation of the game board.
