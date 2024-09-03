@@ -2,7 +2,7 @@
 
 <img width="1431" alt="Screenshot 2024-09-03 at 15 53 53" src="https://github.com/user-attachments/assets/694cc835-3580-41d6-9c61-980f922cf47b">
 
-![Tic-Tac-Toe Board](https://github.com/OdinsBeard82/tic-tac-toe/blob/main/README.md)
+![Tic-Tac-Toe Board](https://loquacious-fenglisu-518055.netlify.app)
 
 ## Project Description
 
